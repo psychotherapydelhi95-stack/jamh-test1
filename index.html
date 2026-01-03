@@ -1,0 +1,609 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal of Addiction and Mental Health</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    /* --- Basic page styles (keeps design consistent with your site) --- */
+    :root{
+      --brand:#004080;
+      --accent:#0073e6;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f7fbff;
+      --maxw:1100px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0; color:#222; background:var(--bg); line-height:1.6;
+    }
+    .site {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 18px 60px;
+    }
+
+    /* header / nav */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e6eefc;
+      position: sticky; top: 0; z-index: 30;
+      box-shadow: 0 1px 0 rgba(20,40,80,0.02);
+    }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 12px 18px; display:flex; align-items:center; gap:18px; justify-content:space-between; }
+    .logo { font-weight:700; color:var(--brand); letter-spacing:0.3px; text-decoration:none; }
+    nav ul { list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; }
+    nav a { color:#28333a; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:6px; }
+    nav a:hover, nav a:focus { background: rgba(0,115,230,0.06); color:var(--accent); outline: none; }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(180deg, rgba(0,64,128,0.7), rgba(0,64,128,0.45)), url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600") center/cover no-repeat;
+      padding: 72px 18px;
+      color: #fff;
+      text-align:center;
+    }
+    .hero h1 { margin:0; font-size:2.4rem; letter-spacing:0.2px; }
+    .hero p { margin:12px auto 0; max-width:760px; font-size:1.05rem; opacity:0.95; }
+
+    main { margin-top:18px; }
+
+    /* sections */
+    .section { background: var(--card); margin: 18px 0; padding: 22px; border-radius:10px; box-shadow: 0 6px 20px rgba(12,40,80,0.03); }
+    .section h2 { margin:0 0 10px 0; color:var(--brand); font-size:1.4rem; }
+    .muted { color:var(--muted); font-size:0.95rem; }
+
+    /* editorial card */
+    .editor-flex { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+    .editor-photo { width:140px; height:140px; object-fit:cover; border-radius:8px; border:3px solid rgba(0,64,128,0.06); }
+    .editor-details p { margin:6px 0; }
+
+    /* submit box - reduced steps */
+    .submit-box { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:16px; background:linear-gradient(90deg,#f0f8ff,#fbfeff); border-radius:8px; border-left:4px solid var(--accent); }
+    .submit-desc { flex:1; min-width:240px; }
+    .submit-cta { display:flex; gap:12px; align-items:center; }
+    .btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 16px; border-radius:8px; text-decoration:none; font-weight:700; }
+    .btn.secondary { background:#ffffff; color:var(--accent); border:1px solid rgba(0,115,230,0.12); }
+    .btn:focus { outline: 3px solid rgba(0,115,230,0.18); }
+
+    /* contents & papers */
+    ul.simple { padding-left:18px; margin:8px 0; }
+    .paper { padding:12px 0; border-bottom:1px dashed #eef4ff; }
+    .paper h3 { margin:0; font-size:1.05rem; }
+    .meta { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+
+    /* contact / footer */
+    footer { margin-top:18px; text-align:center; color:var(--muted); font-size:0.95rem; padding:18px 0; }
+
+    /* responsive */
+    @media (max-width:760px){
+      .editor-flex { flex-direction:column; align-items:center; text-align:center; }
+      .submit-box { flex-direction:column; align-items:stretch; }
+      .submit-cta { justify-content:space-between; width:100%; }
+      .hero { padding:46px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a class="logo" href="index.html">JAMH</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#editors">Editorial Board</a></li>
+          <li><a href="#submit">Submit Manuscript</a></li>
+          <li><a href="#contents">Contents</a></li>
+          <li><a href="#issue">Current Issue</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" role="banner">
+    <div class="site">
+      <h1>Journal of Addiction and Mental Health</h1>
+      <p>International peer-reviewed quarterly publishing high-quality research on addiction, clinical psychology and mental health.</p>
+    </div>
+  </section>
+
+  <main class="site" id="main">
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About the Journal</h2>
+      <p class="muted">Official journal of the Society for Addiction Psychology (SAP), established in 2022. Publishes original research, invited reviews, case reports, and scholarly work related to addiction and mental health. ISSN: <strong>3107-8338</strong>.</p>
+    </section>
+
+    <!-- EDITORIAL BOARD -->
+    <section id="editors" class="section" aria-labelledby="editors-heading">
+      <h2 id="editors-heading">Editorial Board</h2>
+<section id="editors" class="section">
+  
+  
+  <ul>
+    <li><strong>Dr. R.K. Dhamija</strong><br> Director, IHBAS Delhi • dhamijark@gov.in</li>
+
+    <li><strong>Dr. Naved Iqbal</strong><br>
+      Professor, Department of Psychology<br>
+      Jamia Milia Islamia University, Delhi • niqbal@jmi.ac.in
+    </li>
+
+    
+    <li><strong>Dr. Vishal Dhiman</strong><br>
+      Additional Professor, Department of Psychiatry<br>
+      AIIMS Rishikesh • vishal.psyc@aiimsrishikesh.edu.in
+    </li>
+
+    <li><strong>Dr. Sandhya Fernandez</strong><br>
+      Clinical Psychologist & Psychology Advisor<br>
+      32 Killarney Road, Frankton Hamilton, New Zealand • fernandezsandhya@gmail.com
+    </li>
+
+    <li><strong>Renjith R. Pillai</strong><br>
+      Associate Professor, Psychiatric Social Work<br>
+      Department of Psychiatry, PGIMER Chandigarh • pillai.renjith@pgimer.edu.in
+    </li>
+
+    <li><strong>Dr Anatolii Tsarkov</strong><br>
+      Consultant Adult Psychiatrist & Senior Lecturer, UNZA<br>
+      P.O. Box UTH 7 Lusaka 10101, Zambia • anatoliydoc@gmail.com
+    </li>
+  </ul>
+
+  <h2 style="margin-top:40px;">Editor-in-Chief</h2>
+        <li><strong>Dr. Naveen Grover</strong><br>
+      Room No. 121, Academic Block, IHBAS, Delhi–110095<br>
+      <strong>Email:</strong> jamh.editor@gmail.com
+</li>
+
+    </div>
+  </div>
+
+  <h2 style="margin-top:40px;">Associate Editors</h2>
+  
+    <li><strong>Dr. Ajay Goyal</strong><br>
+      Dept of Psychosocial Support in Disaster Management<br>
+      NIMHANS Bengaluru 560095<br>
+ IHBAS, Delhi–110095<br>
+      </li>
+    <li><strong>Dr. Azmat Jahan</strong><br>
+Faculty of Humanities and Social Sciences<br>
+Vishwakarma University Pune - 411 048</li>
+  
+</section>
+
+    <!-- SUBMIT (reduced steps) -->
+    <section id="submit" class="section" aria-labelledby="submit-heading">
+      <h2 id="submit-heading">Submit Manuscript</h2>
+
+      <!-- SUMMARY + CTA: only one click to go to submission.html (reduced steps) -->
+      <div class="submit-box" role="region" aria-label="Submission call to action">
+        <div class="submit-desc">
+          <p class="muted">
+            We invite original articles, reviews, meta-analyses, conceptual papers, case studies, field studies, opinions and letters on addiction and mental health.
+            Please prepare manuscripts per <strong>APA 7th Edition</strong>.
+          </p>
+          <p class="muted" style="margin-top:8px; font-size:0.95rem;">
+            Submission is a single-step process: click <strong>Submit Your Manuscript</strong> to open the submission form (Google Form / custom form) where you can upload files, receive instant confirmation, and get a Submission ID.
+          </p>
+          <a href="/submit.html">Submit Manuscript</a>
+
+       
+
+          <!-- Quick links: guidelines and contact -->
+          <a class="btn secondary" href="guidelines.html" title="Manuscript preparation guidelines">Author Guidelines</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENTS -->
+    <section id="contents" class="section" aria-labelledby="contents-heading">
+      <h2 id="contents-heading">Current Issue – Volume 1 Issue 1 (July–September 2025)</h2>
+
+<div class="paper" role="article">
+        <h3><a href="articles/Editorial.pdf" target="_blank" rel="noopener">From the Editor’s Desk</a></h3>
+      
+      </div>      
+
+
+
+    </section>
+
+    <!-- CURRENT ISSUE -->
+    <section id="issue" class="section" aria-labelledby="issue-heading">
+      <h2 id="issue-heading">Review Articles</h2>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/Article1.pdf" target="_blank" rel="noopener">“#WorkoutwithSocialMedia”: Ameliorating effects of social media on health-promoting behaviour among Adults</a></h3>
+        <p class="meta">Kashish Pandey et al. • pp. 1–11</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-2.pdf" target="_blank" rel="noopener">From Experimentation to Dependency: Understanding the Development and Consequences of Addiction in Youth</a></h3>
+        <p class="meta">Srishti Singh • pp. 12–21</p>
+      </div>
+
+      <h3 style="margin-top:18px;">Original Articles</h3>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-3.pdf" target="_blank" rel="noopener">Addiction Policy and Advocacy: Youth Empowerment, Legislation Conversations</a></h3>
+        <p class="meta">Akanksha Dubey & Dr. Deepika Kushwaha • pp. 22–29</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-35-39.pdf" target="_blank" rel="noopener">Parent Training and Its Impact on Mobile Addiction Among Children with ADHD</a></h3>
+        <p class="meta">Kaushan Saeed • pp. 30–34</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-40-54.pdf" target="_blank" rel="noopener">Perceived Social Support, Stigma and Mental Health of Female Sex Workers in Aizawl City</a></h3>
+        <p class="meta">Remdingpuii & Dr. Zoengpari • pp. 35–49</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-55-63.pdf" target="_blank" rel="noopener">Effect of Metacognitive Awareness and Learning Style Preference on Academic Achievement of College Students</a></h3>
+        <p class="meta">Neha Sharma & Shrami Negi • pp. 50–58</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-64-69.pdf" target="_blank" rel="noopener">Happiness and Gratitude as Predictors of Life Satisfaction</a></h3>
+        <p class="meta">Dr. Hardeep Lal Joshi & Kuldeep • pp. 59–64</p>
+      </div>
+
+      <h3 style="margin-top:18px;">Case Study</h3>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-70-77.pdf" target="_blank" rel="noopener">Clinical Challenges in Juvenile De-Addiction: A Case Study</a></h3>
+        <p class="meta">Amrita Pain & Mayuri Buragohain • pp. 65–72</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="muted"><strong>Email:</strong> <a href="mailto:jamheditor@gmail.com">jamheditor@gmail.com</a> • <strong>Phone:</strong> 9560399329</p>
+      <p class="muted"><strong>Society Website:</strong> <a href="https://www.addictionpsychology.in/" target="_blank" rel="noopener">addictionpsychology.in</a></p>
+      <p class="muted"><strong>Journal Website:</strong> <a href="https://www.jamh.in/" target="_blank" rel="noopener">www.jamh.in</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site">
+      © 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology
+    </div>
+  </footer>
+
+  <script>
+    // Small enhancement: highlight nav link when scrolling
+    (function() {
+      const sections = document.querySelectorAll('main .section, main section');
+      const navLinks = document.querySelectorAll('nav a');
+
+      function onScroll(){
+        const y = window.scrollY + 120; // offset for sticky header
+        let current = null;
+        sections.forEach(s => {
+          if (s.offsetTop <= y) current = s;
+        });
+        if(!current) return;
+        const id = current.id;
+        navLinks.forEach(a => {
+          if (a.getAttribute('href') === '#'+id) a.style.color = 'var(--accent)';
+          else a.style.color = '';
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal of Addiction and Mental Health</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    /* --- Basic page styles (keeps design consistent with your site) --- */
+    :root{
+      --brand:#004080;
+      --accent:#0073e6;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f7fbff;
+      --maxw:1100px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0; color:#222; background:var(--bg); line-height:1.6;
+    }
+    .site {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 18px 60px;
+    }
+
+    /* header / nav */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e6eefc;
+      position: sticky; top: 0; z-index: 30;
+      box-shadow: 0 1px 0 rgba(20,40,80,0.02);
+    }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 12px 18px; display:flex; align-items:center; gap:18px; justify-content:space-between; }
+    .logo { font-weight:700; color:var(--brand); letter-spacing:0.3px; text-decoration:none; }
+    nav ul { list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; }
+    nav a { color:#28333a; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:6px; }
+    nav a:hover, nav a:focus { background: rgba(0,115,230,0.06); color:var(--accent); outline: none; }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(180deg, rgba(0,64,128,0.7), rgba(0,64,128,0.45)), url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600") center/cover no-repeat;
+      padding: 72px 18px;
+      color: #fff;
+      text-align:center;
+    }
+    .hero h1 { margin:0; font-size:2.4rem; letter-spacing:0.2px; }
+    .hero p { margin:12px auto 0; max-width:760px; font-size:1.05rem; opacity:0.95; }
+
+    main { margin-top:18px; }
+
+    /* sections */
+    .section { background: var(--card); margin: 18px 0; padding: 22px; border-radius:10px; box-shadow: 0 6px 20px rgba(12,40,80,0.03); }
+    .section h2 { margin:0 0 10px 0; color:var(--brand); font-size:1.4rem; }
+    .muted { color:var(--muted); font-size:0.95rem; }
+
+    /* editorial card */
+    .editor-flex { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+    .editor-photo { width:140px; height:140px; object-fit:cover; border-radius:8px; border:3px solid rgba(0,64,128,0.06); }
+    .editor-details p { margin:6px 0; }
+
+    /* submit box - reduced steps */
+    .submit-box { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:16px; background:linear-gradient(90deg,#f0f8ff,#fbfeff); border-radius:8px; border-left:4px solid var(--accent); }
+    .submit-desc { flex:1; min-width:240px; }
+    .submit-cta { display:flex; gap:12px; align-items:center; }
+    .btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 16px; border-radius:8px; text-decoration:none; font-weight:700; }
+    .btn.secondary { background:#ffffff; color:var(--accent); border:1px solid rgba(0,115,230,0.12); }
+    .btn:focus { outline: 3px solid rgba(0,115,230,0.18); }
+
+    /* contents & papers */
+    ul.simple { padding-left:18px; margin:8px 0; }
+    .paper { padding:12px 0; border-bottom:1px dashed #eef4ff; }
+    .paper h3 { margin:0; font-size:1.05rem; }
+    .meta { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+
+    /* contact / footer */
+    footer { margin-top:18px; text-align:center; color:var(--muted); font-size:0.95rem; padding:18px 0; }
+
+    /* responsive */
+    @media (max-width:760px){
+      .editor-flex { flex-direction:column; align-items:center; text-align:center; }
+      .submit-box { flex-direction:column; align-items:stretch; }
+      .submit-cta { justify-content:space-between; width:100%; }
+      .hero { padding:46px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a class="logo" href="index.html">JAMH</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#editors">Editorial Board</a></li>
+          <li><a href="#submit">Submit Manuscript</a></li>
+          <li><a href="#contents">Contents</a></li>
+          <li><a href="#issue">Current Issue</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" role="banner">
+    <div class="site">
+      <h1>Journal of Addiction and Mental Health</h1>
+      <p>International peer-reviewed quarterly publishing high-quality research on addiction, clinical psychology and mental health.</p>
+    </div>
+  </section>
+
+  <main class="site" id="main">
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About the Journal</h2>
+      <p class="muted">Official journal of the Society for Addiction Psychology (SAP), established in 2022. Publishes original research, invited reviews, case reports, and scholarly work related to addiction and mental health. ISSN: <strong>3107-8338</strong>.</p>
+    </section>
+
+    <!-- EDITORIAL BOARD -->
+    <section id="editors" class="section" aria-labelledby="editors-heading">
+      <h2 id="editors-heading">Editorial Board</h2>
+<section id="editors" class="section">
+  
+  
+  <ul>
+    <li><strong>Dr. R.K. Dhamija</strong><br> Director, IHBAS Delhi • dhamijark@gov.in</li>
+
+    <li><strong>Dr. Naved Iqbal</strong><br>
+      Professor, Department of Psychology<br>
+      Jamia Milia Islamia University, Delhi • niqbal@jmi.ac.in
+    </li>
+
+    
+    <li><strong>Dr. Vishal Dhiman</strong><br>
+      Additional Professor, Department of Psychiatry<br>
+      AIIMS Rishikesh • vishal.psyc@aiimsrishikesh.edu.in
+    </li>
+
+    <li><strong>Dr. Sandhya Fernandez</strong><br>
+      Clinical Psychologist & Psychology Advisor<br>
+      32 Killarney Road, Frankton Hamilton, New Zealand • fernandezsandhya@gmail.com
+    </li>
+
+    <li><strong>Renjith R. Pillai</strong><br>
+      Associate Professor, Psychiatric Social Work<br>
+      Department of Psychiatry, PGIMER Chandigarh • pillai.renjith@pgimer.edu.in
+    </li>
+
+    <li><strong>Dr Anatolii Tsarkov</strong><br>
+      Consultant Adult Psychiatrist & Senior Lecturer, UNZA<br>
+      P.O. Box UTH 7 Lusaka 10101, Zambia • anatoliydoc@gmail.com
+    </li>
+  </ul>
+
+  <h2 style="margin-top:40px;">Editor-in-Chief</h2>
+        <li><strong>Dr. Naveen Grover</strong><br>
+      Room No. 121, Academic Block, IHBAS, Delhi–110095<br>
+      <strong>Email:</strong> jamh.editor@gmail.com
+</li>
+
+    </div>
+  </div>
+
+  <h2 style="margin-top:40px;">Associate Editors</h2>
+  
+    <li><strong>Dr. Ajay Goyal</strong><br>
+      Dept of Psychosocial Support in Disaster Management<br>
+      NIMHANS Bengaluru 560095<br>
+ IHBAS, Delhi–110095<br>
+      </li>
+    <li><strong>Dr. Azmat Jahan</strong><br>
+Faculty of Humanities and Social Sciences<br>
+Vishwakarma University Pune - 411 048</li>
+  
+</section>
+
+    <!-- SUBMIT (reduced steps) -->
+    <section id="submit" class="section" aria-labelledby="submit-heading">
+      <h2 id="submit-heading">Submit Manuscript</h2>
+
+      <!-- SUMMARY + CTA: only one click to go to submission.html (reduced steps) -->
+      <div class="submit-box" role="region" aria-label="Submission call to action">
+        <div class="submit-desc">
+          <p class="muted">
+            We invite original articles, reviews, meta-analyses, conceptual papers, case studies, field studies, opinions and letters on addiction and mental health.
+            Please prepare manuscripts per <strong>APA 7th Edition</strong>.
+          </p>
+          <p class="muted" style="margin-top:8px; font-size:0.95rem;">
+            Submission is a single-step process: click <strong>Submit Your Manuscript</strong> to open the submission form (Google Form / custom form) where you can upload files, receive instant confirmation, and get a Submission ID.
+          </p>
+          <a href="/submit.html">Submit Manuscript</a>
+
+       class="submit-btn"
+       
+          <!-- Quick links: guidelines and contact -->
+          <a class="btn secondary" href="guidelines.html" title="Manuscript preparation guidelines">Author Guidelines</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENTS -->
+    <section id="contents" class="section" aria-labelledby="contents-heading">
+      <h2 id="contents-heading">Current Issue – Volume 1 Issue 1 (July–September 2025)</h2>
+
+<div class="paper" role="article">
+        <h3><a href="articles/Editorial.pdf" target="_blank" rel="noopener">From the Editor’s Desk</a></h3>
+      
+      </div>      
+
+
+
+    </section>
+
+    <!-- CURRENT ISSUE -->
+    <section id="issue" class="section" aria-labelledby="issue-heading">
+      <h2 id="issue-heading">Review Articles</h2>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/Article1.pdf" target="_blank" rel="noopener">“#WorkoutwithSocialMedia”: Ameliorating effects of social media on health-promoting behaviour among Adults</a></h3>
+        <p class="meta">Kashish Pandey et al. • pp. 1–11</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-2.pdf" target="_blank" rel="noopener">From Experimentation to Dependency: Understanding the Development and Consequences of Addiction in Youth</a></h3>
+        <p class="meta">Srishti Singh • pp. 12–21</p>
+      </div>
+
+      <h3 style="margin-top:18px;">Original Articles</h3>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-3.pdf" target="_blank" rel="noopener">Addiction Policy and Advocacy: Youth Empowerment, Legislation Conversations</a></h3>
+        <p class="meta">Akanksha Dubey & Dr. Deepika Kushwaha • pp. 22–29</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-35-39.pdf" target="_blank" rel="noopener">Parent Training and Its Impact on Mobile Addiction Among Children with ADHD</a></h3>
+        <p class="meta">Kaushan Saeed • pp. 30–34</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-40-54.pdf" target="_blank" rel="noopener">Perceived Social Support, Stigma and Mental Health of Female Sex Workers in Aizawl City</a></h3>
+        <p class="meta">Remdingpuii & Dr. Zoengpari • pp. 35–49</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-55-63.pdf" target="_blank" rel="noopener">Effect of Metacognitive Awareness and Learning Style Preference on Academic Achievement of College Students</a></h3>
+        <p class="meta">Neha Sharma & Shrami Negi • pp. 50–58</p>
+      </div>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-64-69.pdf" target="_blank" rel="noopener">Happiness and Gratitude as Predictors of Life Satisfaction</a></h3>
+        <p class="meta">Dr. Hardeep Lal Joshi & Kuldeep • pp. 59–64</p>
+      </div>
+
+      <h3 style="margin-top:18px;">Case Study</h3>
+
+      <div class="paper" role="article">
+        <h3><a href="articles/JAMH-70-77.pdf" target="_blank" rel="noopener">Clinical Challenges in Juvenile De-Addiction: A Case Study</a></h3>
+        <p class="meta">Amrita Pain & Mayuri Buragohain • pp. 65–72</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="muted"><strong>Email:</strong> <a href="mailto:jamheditor@gmail.com">jamheditor@gmail.com</a> • <strong>Phone:</strong> 9560399329</p>
+      <p class="muted"><strong>Society Website:</strong> <a href="https://www.addictionpsychology.in/" target="_blank" rel="noopener">addictionpsychology.in</a></p>
+      <p class="muted"><strong>Journal Website:</strong> <a href="https://www.jamh.in/" target="_blank" rel="noopener">www.jamh.in</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site">
+      © 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology
+    </div>
+  </footer>
+
+  <script>
+    // Small enhancement: highlight nav link when scrolling
+    (function() {
+      const sections = document.querySelectorAll('main .section, main section');
+      const navLinks = document.querySelectorAll('nav a');
+
+      function onScroll(){
+        const y = window.scrollY + 120; // offset for sticky header
+        let current = null;
+        sections.forEach(s => {
+          if (s.offsetTop <= y) current = s;
+        });
+        if(!current) return;
+        const id = current.id;
+        navLinks.forEach(a => {
+          if (a.getAttribute('href') === '#'+id) a.style.color = 'var(--accent)';
+          else a.style.color = '';
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
