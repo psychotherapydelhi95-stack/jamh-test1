@@ -1,291 +1,293 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Journal of Addiction and Mental Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
-  <style>
-    /* --- Basic page styles (keeps design consistent with your site) --- */
-    :root{
-      --brand:#004080;
-      --accent:#0073e6;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --bg:#f7fbff;
-      --maxw:1100px;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      margin: 0; color:#222; background:var(--bg); line-height:1.6;
-    }
-    .site {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 18px 60px;
-    }
-
-    /* header / nav */
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e6eefc;
-      position: sticky; top: 0; z-index: 30;
-      box-shadow: 0 1px 0 rgba(20,40,80,0.02);
-    }
-    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 12px 18px; display:flex; align-items:center; gap:18px; justify-content:space-between; }
-    .logo { font-weight:700; color:var(--brand); letter-spacing:0.3px; text-decoration:none; }
-    nav ul { list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; }
-    nav a { color:#28333a; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:6px; }
-    nav a:hover, nav a:focus { background: rgba(0,115,230,0.06); color:var(--accent); outline: none; }
-
-    /* hero */
-    .hero {
-      background: linear-gradient(180deg, rgba(0,64,128,0.7), rgba(0,64,128,0.45)), url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600") center/cover no-repeat;
-      padding: 72px 18px;
-      color: #fff;
-      text-align:center;
-    }
-    .hero h1 { margin:0; font-size:2.4rem; letter-spacing:0.2px; }
-    .hero p { margin:12px auto 0; max-width:760px; font-size:1.05rem; opacity:0.95; }
-
-    main { margin-top:18px; }
-
-    /* sections */
-    .section { background: var(--card); margin: 18px 0; padding: 22px; border-radius:10px; box-shadow: 0 6px 20px rgba(12,40,80,0.03); }
-    .section h2 { margin:0 0 10px 0; color:var(--brand); font-size:1.4rem; }
-    .muted { color:var(--muted); font-size:0.95rem; }
-
-    /* editorial card */
-    .editor-flex { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
-    .editor-photo { width:140px; height:140px; object-fit:cover; border-radius:8px; border:3px solid rgba(0,64,128,0.06); }
-    .editor-details p { margin:6px 0; }
-
-    /* submit box - reduced steps */
-    .submit-box { display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:16px; background:linear-gradient(90deg,#f0f8ff,#fbfeff); border-radius:8px; border-left:4px solid var(--accent); }
-    .submit-desc { flex:1; min-width:240px; }
-    .submit-cta { display:flex; gap:12px; align-items:center; }
-    .btn { display:inline-block; background:var(--accent); color:#fff; padding:12px 16px; border-radius:8px; text-decoration:none; font-weight:700; }
-    .btn.secondary { background:#ffffff; color:var(--accent); border:1px solid rgba(0,115,230,0.12); }
-    .btn:focus { outline: 3px solid rgba(0,115,230,0.18); }
-
-    /* contents & papers */
-    ul.simple { padding-left:18px; margin:8px 0; }
-    .paper { padding:12px 0; border-bottom:1px dashed #eef4ff; }
-    .paper h3 { margin:0; font-size:1.05rem; }
-    .meta { color:var(--muted); font-size:0.9rem; margin-top:6px; }
-
-    /* contact / footer */
-    footer { margin-top:18px; text-align:center; color:var(--muted); font-size:0.95rem; padding:18px 0; }
-
-    /* responsive */
-    @media (max-width:760px){
-      .editor-flex { flex-direction:column; align-items:center; text-align:center; }
-      .submit-box { flex-direction:column; align-items:stretch; }
-      .submit-cta { justify-content:space-between; width:100%; }
-      .hero { padding:46px 12px; }
-    }
-  </style>
 </head>
+
 <body>
-  <header>
+  <header id="mainHeader">
     <div class="nav-inner">
       <a class="logo" href="index.html">JAMH</a>
       <nav aria-label="Main navigation">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#editors">Editorial Board</a></li>
-          <li><a href="#submit">Submit Manuscript</a></li>
+          <li><a href="#submit">Submit</a></li>
           <li><a href="#contents">Contents</a></li>
-          <li><a href="#issue">Current Issue</a></li>
+          <li><a href="#issue">Issues</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <section class="hero" role="banner">
-    <div class="site">
+  <section class="hero hero-with-image" role="banner">
+    <div class="hero-content">
       <h1>Journal of Addiction and Mental Health</h1>
-      <p>International peer-reviewed quarterly publishing high-quality research on addiction, clinical psychology and mental health.</p>
+      <p>International peer-reviewed quarterly publishing high-quality research on addiction, clinical psychology and
+        mental health.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="#submit" class="btn btn-primary btn-large">Submit Your Research</a>
+        <a href="#issue" class="btn btn-secondary btn-large">Latest Issue</a>
+      </div>
     </div>
   </section>
 
-  <main class="site" id="main">
+  <main class="container" id="main">
     <!-- ABOUT -->
-    <section id="about" class="section" aria-labelledby="about-heading">
+    <section id="about" class="section-card" aria-labelledby="about-heading">
       <h2 id="about-heading">About the Journal</h2>
-      <p class="muted">Official journal of the Society for Addiction Psychology (SAP), established in 2022. Publishes original research, invited reviews, case reports, and scholarly work related to addiction and mental health. ISSN: <strong>3107-8338</strong>.</p>
+      <p class="text-muted">Official journal of the <strong>Society for Addiction Psychology (SAP)</strong>, established
+        in 2022. Publishes original research, invited reviews, case reports, and scholarly work related to addiction and
+        mental health.</p>
+      <p class="text-muted"><strong>ISSN:</strong> 3107-8338</p>
+
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div class="card text-center">
+          <div style="font-size: 2.5rem; color: var(--primary-500); margin-bottom: 0.5rem;">📚</div>
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Peer-Reviewed</h3>
+          <p style="font-size: 0.875rem; color: var(--gray-500); margin: 0;">Rigorous review process</p>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 2.5rem; color: var(--accent-teal); margin-bottom: 0.5rem;">🌍</div>
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">International</h3>
+          <p style="font-size: 0.875rem; color: var(--gray-500); margin: 0;">Global research network</p>
+        </div>
+        <div class="card text-center">
+          <div style="font-size: 2.5rem; color: var(--accent-purple); margin-bottom: 0.5rem;">🔬</div>
+          <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Open Access</h3>
+          <p style="font-size: 0.875rem; color: var(--gray-500); margin: 0;">Freely available research</p>
+        </div>
+      </div>
     </section>
 
     <!-- EDITORIAL BOARD -->
-    <section id="editors" class="section" aria-labelledby="editors-heading">
+    <section id="editors" class="section-card" aria-labelledby="editors-heading">
       <h2 id="editors-heading">Editorial Board</h2>
-<section id="editors" class="section">
-  
-  
-  <ul>
-    <li><strong>Dr. R.K. Dhamija</strong><br> Director, IHBAS Delhi • dhamijark@gov.in</li>
 
-    <li><strong>Dr. Naved Iqbal</strong><br>
-      Professor, Department of Psychology<br>
-      Jamia Milia Islamia University, Delhi • niqbal@jmi.ac.in
-    </li>
+      <h3 style="color: var(--primary-700); margin-top: 2rem; margin-bottom: 1.5rem;">Editor-in-Chief</h3>
+      <div class="card"
+        style="background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%); border-left: 4px solid var(--primary-500);">
+        <h4 style="color: var(--primary-700); margin-bottom: 0.5rem;">Dr. Naveen Grover</h4>
+        <p style="margin: 0.25rem 0; color: var(--gray-700);">Room No. 121, Academic Block, IHBAS, Delhi–110095</p>
+        <p style="margin: 0.25rem 0;"><strong>Email:</strong> <a
+            href="mailto:jamh.editor@gmail.com">jamh.editor@gmail.com</a></p>
+      </div>
 
-    
-    <li><strong>Dr. Vishal Dhiman</strong><br>
-      Additional Professor, Department of Psychiatry<br>
-      AIIMS Rishikesh • vishal.psyc@aiimsrishikesh.edu.in
-    </li>
+      <h3 style="color: var(--primary-700); margin-top: 2.5rem; margin-bottom: 1.5rem;">Associate Editors</h3>
+      <div style="display: grid; gap: 1rem;">
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. Ajay Goyal</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Dept of Psychosocial Support in Disaster Management</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">NIMHANS Bengaluru 560095, IHBAS, Delhi–110095</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. Azmat Jahan</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Faculty of Humanities and Social Sciences</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Vishwakarma University Pune - 411 048</p>
+        </div>
+      </div>
 
-    <li><strong>Dr. Sandhya Fernandez</strong><br>
-      Clinical Psychologist & Psychology Advisor<br>
-      32 Killarney Road, Frankton Hamilton, New Zealand • fernandezsandhya@gmail.com
-    </li>
+      <h3 style="color: var(--primary-700); margin-top: 2.5rem; margin-bottom: 1.5rem;">Editorial Board Members</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. R.K. Dhamija</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Director, IHBAS Delhi</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a href="mailto:dhamijark@gov.in">dhamijark@gov.in</a></p>
+        </div>
 
-    <li><strong>Renjith R. Pillai</strong><br>
-      Associate Professor, Psychiatric Social Work<br>
-      Department of Psychiatry, PGIMER Chandigarh • pillai.renjith@pgimer.edu.in
-    </li>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. Naved Iqbal</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Professor, Department of Psychology</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Jamia Milia Islamia University, Delhi</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a href="mailto:niqbal@jmi.ac.in">niqbal@jmi.ac.in</a></p>
+        </div>
 
-    <li><strong>Dr Anatolii Tsarkov</strong><br>
-      Consultant Adult Psychiatrist & Senior Lecturer, UNZA<br>
-      P.O. Box UTH 7 Lusaka 10101, Zambia • anatoliydoc@gmail.com
-    </li>
-  </ul>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. Vishal Dhiman</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Additional Professor, Department of Psychiatry</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">AIIMS Rishikesh</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a
+              href="mailto:vishal.psyc@aiimsrishikesh.edu.in">vishal.psyc@aiimsrishikesh.edu.in</a></p>
+        </div>
 
-  <h2 style="margin-top:40px;">Editor-in-Chief</h2>
-        <li><strong>Dr. Naveen Grover</strong><br>
-      Room No. 121, Academic Block, IHBAS, Delhi–110095<br>
-      <strong>Email:</strong> jamh.editor@gmail.com
-</li>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr. Sandhya Fernandez</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Clinical Psychologist & Psychology Advisor</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">32 Killarney Road, Frankton Hamilton, New Zealand</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a
+              href="mailto:fernandezsandhya@gmail.com">fernandezsandhya@gmail.com</a></p>
+        </div>
 
-    </div>
-  </div>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Renjith R. Pillai</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Associate Professor, Psychiatric Social Work</p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Department of Psychiatry, PGIMER Chandigarh</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a
+              href="mailto:pillai.renjith@pgimer.edu.in">pillai.renjith@pgimer.edu.in</a></p>
+        </div>
 
-  <h2 style="margin-top:40px;">Associate Editors</h2>
-  
-    <li><strong>Dr. Ajay Goyal</strong><br>
-      Dept of Psychosocial Support in Disaster Management<br>
-      NIMHANS Bengaluru 560095<br>
- IHBAS, Delhi–110095<br>
-      </li>
-    <li><strong>Dr. Azmat Jahan</strong><br>
-Faculty of Humanities and Social Sciences<br>
-Vishwakarma University Pune - 411 048</li>
-  
-</section>
+        <div class="card">
+          <h4 style="margin-bottom: 0.5rem;">Dr Anatolii Tsarkov</h4>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">Consultant Adult Psychiatrist & Senior Lecturer, UNZA
+          </p>
+          <p style="margin: 0.25rem 0; color: var(--gray-600);">P.O. Box UTH 7 Lusaka 10101, Zambia</p>
+          <p style="margin: 0.25rem 0; font-size: 0.875rem;"><a
+              href="mailto:anatoliydoc@gmail.com">anatoliydoc@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
 
-    <!-- SUBMIT (reduced steps) -->
-    <section id="submit" class="section" aria-labelledby="submit-heading">
+    <!-- SUBMIT -->
+    <section id="submit" class="section-card" aria-labelledby="submit-heading">
       <h2 id="submit-heading">Submit Manuscript</h2>
 
-      <!-- SUMMARY + CTA: only one click to go to submission.html (reduced steps) -->
       <div class="submit-box" role="region" aria-label="Submission call to action">
         <div class="submit-desc">
-          <p class="muted">
-            We invite original articles, reviews, meta-analyses, conceptual papers, case studies, field studies, opinions and letters on addiction and mental health.
+          <p style="margin-bottom: 1rem;">
+            We invite original articles, reviews, meta-analyses, conceptual papers, case studies, field studies,
+            opinions and letters on addiction and mental health.
             Please prepare manuscripts per <strong>APA 7th Edition</strong>.
           </p>
-          <p class="muted" style="margin-top:8px; font-size:0.95rem;">
-            Submission is a single-step process: click <strong>Submit Your Manuscript</strong> to open the submission form (Google Form / custom form) where you can upload files, receive instant confirmation, and get a Submission ID.
+          <p style="margin: 0; font-size: 0.95rem; color: var(--gray-600);">
+            Submission is a single-step process: click <strong>Submit Your Manuscript</strong> to open the submission
+            form where you can upload files, receive instant confirmation, and get a Submission ID.
           </p>
-          <a href="/submit.html">Submit Manuscript</a>
-
-       
-
-          <!-- Quick links: guidelines and contact -->
-          <a class="btn secondary" href="guidelines.html" title="Manuscript preparation guidelines">Author Guidelines</a>
+        </div>
+        <div class="submit-cta">
+          <a href="submit.html" class="btn btn-primary">Submit Manuscript</a>
+          <a href="guidelines.html" class="btn btn-secondary">Author Guidelines</a>
         </div>
       </div>
     </section>
 
     <!-- CONTENTS -->
-    <section id="contents" class="section" aria-labelledby="contents-heading">
+    <section id="contents" class="section-card" aria-labelledby="contents-heading">
       <h2 id="contents-heading">Current Issue – Volume 1 Issue 2 (Oct-Dec 2025)</h2>
 
-<div class="paper" role="article">
-        <h3><a href="articles/Editorial.pdf" target="_blank" rel="noopener">From the Editor’s Desk</a></h3>
-      
-      </div>      
-
-
-
+      <div class="paper" role="article">
+        <h3><a href="articles/Editorial.pdf" target="_blank" rel="noopener">From the Editor's Desk</a></h3>
+      </div>
     </section>
 
     <!-- CURRENT ISSUE -->
-<section id="issue" class="section" aria-labelledby="issue-heading">
-  <h2 id="issue-heading"></h2>
+    <section id="issue" class="section-card" aria-labelledby="issue-heading">
+      <h2 id="issue-heading">Published Issues</h2>
 
-  <div class="volume">
-    <h3>Volume 1, Issue 1 & 2 published (2025-2026)</h3>
+      <div style="margin-top: 1.5rem;">
+        <h3 style="font-size: 1.25rem; color: var(--gray-900); margin-bottom: 1rem;">Volume 1, Issues 1–4 (2025-2026)
+        </h3>
 
-    <ul class="issue-list">
-      <li>
-        <a href="issues/v1-i1.html">
-          Volume 1, Issue 1 (July–September 2025)
-        </a>
-      </li>
-      <li>
-        <a href="issues/v1-i2.html">
-          Volume 1, Issue 2 (Oct-Dec 2025)
-        </a>
-      </li>
-      <li>
-        <a href="issues/v1-i3.html">
-          Volume 1, Issue 3 (Jan-March 2026)
-        </a>
-      </li>
-      <li>
-        <a href="issues/v1-i4.html">
-          Volume 1, Issue 4 (apr-June 2026)
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+        <div style="display: grid; gap: 1rem;">
+          <a href="issues/v1-i1.html" class="card"
+            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 1</h4>
+              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">July–September 2025</p>
+            </div>
+            <span class="badge badge-success">Published</span>
+          </a>
 
-      
+          <a href="issues/v1-i2.html" class="card"
+            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 2</h4>
+              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">October–December 2025</p>
+            </div>
+            <span class="badge badge-success">Published</span>
+          </a>
+
+          <a href="issues/v1-i3.html" class="card"
+            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 3</h4>
+              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">January–March 2026</p>
+            </div>
+            <span class="badge badge-under">Upcoming</span>
+          </a>
+
+          <a href="issues/v1-i4.html" class="card"
+            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 4</h4>
+              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">April–June 2026</p>
+            </div>
+            <span class="badge badge-under">Upcoming</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact" class="section" aria-labelledby="contact-heading">
+    <section id="contact" class="section-card" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Contact</h2>
-      <p class="muted"><strong>Email:</strong> <a href="mailto:jamheditor@gmail.com">jamheditor@gmail.com</a> • <strong>Phone:</strong> 9560399329</p>
-      <p class="muted"><strong>Society Website:</strong> <a href="https://www.addictionpsychology.in/" target="_blank" rel="noopener">addictionpsychology.in</a></p>
-      <p class="muted"><strong>Journal Website:</strong> <a href="https://www.jamh.in/" target="_blank" rel="noopener">www.jamh.in</a></p>
+      <div style="display: grid; gap: 1rem;">
+        <p><strong>Email:</strong> <a href="mailto:jamheditor@gmail.com">jamheditor@gmail.com</a></p>
+        <p><strong>Phone:</strong> 9560399329</p>
+        <p><strong>Society Website:</strong> <a href="https://www.addictionpsychology.in/" target="_blank"
+            rel="noopener">addictionpsychology.in</a></p>
+        <p><strong>Journal Website:</strong> <a href="https://www.jamh.in/" target="_blank"
+            rel="noopener">www.jamh.in</a></p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="site">
-      © 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology
+    <div class="container">
+      <p>© 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology</p>
     </div>
   </footer>
 
   <script>
-    // Small enhancement: highlight nav link when scrolling
-    (function() {
-      const sections = document.querySelectorAll('main .section, main section');
-      const navLinks = document.querySelectorAll('nav a');
-
-      function onScroll(){
-        const y = window.scrollY + 120; // offset for sticky header
-        let current = null;
-        sections.forEach(s => {
-          if (s.offsetTop <= y) current = s;
-        });
-        if(!current) return;
-        const id = current.id;
-        navLinks.forEach(a => {
-          if (a.getAttribute('href') === '#'+id) a.style.color = 'var(--accent)';
-          else a.style.color = '';
-        });
+    // Add scrolled class to header
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
+    }, { passive: true });
+
+    // Smooth scroll highlight for navigation
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    function highlightNav() {
+      const scrollY = window.scrollY + 150;
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.style.color = '';
+        link.style.background = '';
+        if (link.getAttribute('href') === '#' + current) {
+          link.style.color = 'var(--primary-700)';
+          link.style.background = 'var(--primary-100)';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav, { passive: true });
+    highlightNav();
   </script>
 </body>
-</html>
 
+</html>

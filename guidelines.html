@@ -1,127 +1,250 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Author Guidelines – JAMH</title>
-<link rel="stylesheet" href="assets/style.css">
 
-<style>
-.section-box {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #bcd7ff;
-    margin: 25px 0;
-}
-.section-box h2 {
-    color: #003366;
-    margin-bottom: 10px;
-    border-left: 5px solid #4da3ff;
-    padding-left: 10px;
-}
-ul {
-    margin-left: 20px;
-    line-height: 1.8;
-}
-</style>
+<head>
+    <meta charset="utf-8" />
+    <title>Author Guidelines | JAMH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css" />
+    <style>
+        .guidelines-container {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .guideline-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .guideline-section h2 {
+            color: var(--primary-700);
+            border-bottom: 3px solid var(--primary-100);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guideline-section h3 {
+            color: var(--gray-900);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .guideline-section ul,
+        .guideline-section ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .guideline-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff4e6 0%, #fef3c7 50%);
+            border-left: 4px solid var(--accent-amber);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--accent-amber);
+            margin-top: 0;
+        }
+    </style>
 </head>
 
 <body>
+    <header id="mainHeader">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">JAMH</a>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#editors">Editorial Board</a></li>
+                    <li><a href="submit.html">Submit</a></li>
+                    <li><a href="guidelines.html">Guidelines</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<h1>Author Guidelines</h1>
+    <div class="container">
+        <div class="guidelines-container">
+            <div class="guideline-section">
+                <h1
+                    style="text-align: center; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Author Guidelines</h1>
+                <p style="text-align: center; color: var(--gray-600); margin-bottom: 0;">Guidelines for submitting
+                    manuscripts to JAMH</p>
+            </div>
 
-<div class="section-box">
-<h2>1. Manuscript Categories</h2>
-<ul>
-    <li><strong>Original Articles</strong> (2500–4500 words)</li>
-    <li><strong>Review Articles</strong> (3000–6000 words)</li>
-    <li><strong>Case Studies</strong> (1500–2500 words)</li>
-    <li><strong>Short Communications</strong> (1000–1500 words)</li>
-</ul>
-</div>
+            <div class="guideline-section">
+                <h2>Manuscript Preparation</h2>
+                <p>All manuscripts must be prepared according to <strong>APA 7th Edition</strong> formatting guidelines.
+                </p>
 
-<div class="section-box">
-<h2>2. Manuscript Formatting</h2>
-<ul>
-    <li>Font: <strong>Times New Roman, 12 pt</strong></li>
-    <li>Spacing: <strong>1.5 line spacing</strong></li>
-    <li>Margins: <strong>1 inch</strong> on all sides</li>
-    <li>Submit manuscript in <strong>PDF or DOCX</strong> format</li>
-    <li>All pages should be <strong>numbered</strong></li>
-</ul>
-</div>
+                <h3>General Requirements</h3>
+                <ul>
+                    <li><strong>Language:</strong> English (US or UK spelling, but be consistent)</li>
+                    <li><strong>File Format:</strong> Submit as PDF or Word (.docx)</li>
+                    <li><strong>Font:</strong> Times New Roman, 12pt</li>
+                    <li><strong>Line Spacing:</strong> Double-spaced throughout</li>
+                    <li><strong>Margins:</strong> 1 inch (2.54 cm) on all sides</li>
+                    <li><strong>Page Numbers:</strong> Number all pages in the top right corner</li>
+                </ul>
 
-<div class="section-box">
-<h2>3. Structure of Manuscript</h2>
-<ul>
-    <li><strong>Title Page</strong> (Title, Authors, Affiliations, Email, Corresponding Author)</li>
-    <li><strong>Abstract</strong> (150–250 words)</li>
-    <li><strong>Keywords</strong> (3–6 keywords)</li>
-    <li><strong>Introduction</strong></li>
-    <li><strong>Methodology</strong></li>
-    <li><strong>Results</strong></li>
-    <li><strong>Discussion</strong></li>
-    <li><strong>Conclusion</strong></li>
-    <li><strong>References (APA style)</strong></li>
-</ul>
-</div>
+                <h3>Manuscript Structure</h3>
+                <ol>
+                    <li><strong>Title Page</strong> - Include title, author names, affiliations, and corresponding
+                        author contact</li>
+                    <li><strong>Abstract</strong> - 150-250 words summarizing the study</li>
+                    <li><strong>Keywords</strong> - 4-6 keywords for indexing</li>
+                    <li><strong>Introduction</strong> - Background and research objectives</li>
+                    <li><strong>Methods</strong> - Detailed methodology</li>
+                    <li><strong>Results</strong> - Findings with tables/figures</li>
+                    <li><strong>Discussion</strong> - Interpretation and implications</li>
+                    <li><strong>References</strong> - APA 7th edition format</li>
+                    <li><strong>Appendices</strong> - If applicable</li>
+                </ol>
+            </div>
 
-<div class="section-box">
-<h2>4. Reference Style (APA 7th Edition)</h2>
-<ul>
-    <li>Follow <strong>APA 7th Edition</strong> formatting.</li>
-    <li>Examples:</li>
-    <ul>
-        <li>Journal Article: Author, A. A. (Year). Title of article. <em>Journal Name</em>, volume(issue), pages.</li>
-        <li>Book: Author, A. A. (Year). <em>Book title</em>. Publisher.</li>
-    </ul>
-</ul>
-</div>
+            <div class="guideline-section">
+                <h2>Article Types</h2>
 
-<div class="section-box">
-<h2>5. Plagiarism Policy</h2>
-<ul>
-    <li>Acceptable similarity index: <strong>below 10%</strong></li>
-    <li>Higher similarity will be returned for revision</li>
-</ul>
-</div>
+                <h3>Original Research Articles</h3>
+                <ul>
+                    <li>Word limit: 5,000-8,000 words (excluding references)</li>
+                    <li>Report original empirical research</li>
+                    <li>Include all standard sections (Introduction, Methods, Results, Discussion)</li>
+                </ul>
 
-<div class="section-box">
-<h2>6. Ethics & Approval</h2>
-<ul>
-    <li>Research involving human subjects requires <strong>Ethics Committee approval</strong></li>
-    <li>Upload the ethics letter in PDF format</li>
-    <li>Include a <strong>Conflict of Interest</strong> statement</li>
-</ul>
-</div>
+                <h3>Review Articles</h3>
+                <ul>
+                    <li>Word limit: 6,000-10,000 words</li>
+                    <li>Comprehensive overview of research on a specific topic</li>
+                    <li>Systematic reviews and meta-analyses welcomed</li>
+                </ul>
 
-<div class="section-box">
-<h2>7. Cover Letter</h2>
-<p>Attach a cover letter including:</p>
-<ul>
-    <li>Statement of originality</li>
-    <li>Confirmation that the article is not under review elsewhere</li>
-    <li>Names of all authors</li>
-</ul>
-</div>
+                <h3>Case Studies</h3>
+                <ul>
+                    <li>Word limit: 2,000-4,000 words</li>
+                    <li>Detailed examination of individual cases</li>
+                    <li>Must include informed consent documentation</li>
+                </ul>
 
-<div class="section-box">
-<h2>8. Submission Process</h2>
-<p>Submit manuscripts through the online submission form:</p>
+                <h3>Short Communications</h3>
+                <ul>
+                    <li>Word limit: 1,500-2,500 words</li>
+                    <li>Brief reports of preliminary or pilot studies</li>
+                </ul>
+            </div>
 
-</div>
+            <div class="guideline-section">
+                <h2>Ethical Requirements</h2>
 
-<div class="section-box">
-<h2>9. After Submission</h2>
-<ul>
-    <li>Authors will receive an <strong>automatic acknowledgement</strong></li>
-    <li>Editorial review takes <strong>3–5 working days</strong></li>
-</ul>
-</div>
+                <div class="highlight-box">
+                    <h4>⚠️ Important</h4>
+                    <p style="margin: 0;">All research involving human participants must have ethical approval from an
+                        appropriate institutional review board (IRB) or ethics committee.</p>
+                </div>
 
-<a class="back-link" href="index.html">Return to Home</a>
+                <ul>
+                    <li>Informed consent must be obtained from all participants</li>
+                    <li>Confidentiality and anonymity must be maintained</li>
+                    <li>Declare any conflicts of interest</li>
+                    <li>Disclose funding sources</li>
+                    <li>Upload the ethics letter in PDF format</li>
+                </ul>
+            </div>
 
+            <div class="guideline-section">
+                <h2>Citations and References</h2>
+                <p>Use <strong>APA 7th Edition</strong> style for all citations and references.</p>
+
+                <h3>In-text Citations</h3>
+                <ul>
+                    <li>Single author: (Smith, 2023)</li>
+                    <li>Two authors: (Smith & Jones, 2023)</li>
+                    <li>Three or more authors: (Smith et al., 2023)</li>
+                    <li>Direct quote: (Smith, 2023, p. 15)</li>
+                </ul>
+
+                <h3>Reference List Format</h3>
+                <ul>
+                    <li>Alphabetize by first author's surname</li>
+                    <li>Use hanging indent (0.5 inch)</li>
+                    <li>Include DOI when available</li>
+                </ul>
+            </div>
+
+            <div class="guideline-section">
+                <h2>Submission Process</h2>
+                <ol>
+                    <li><strong>Prepare your manuscript</strong> according to these guidelines</li>
+                    <li><strong>Gather required documents:</strong> manuscript, cover letter, ethics approval</li>
+                    <li><strong>Submit online</strong> via our <a href="submit.html">submission portal</a></li>
+                    <li><strong>Receive confirmation</strong> with your unique Submission ID</li>
+                    <li><strong>Track your submission</strong> using the <a href="Track.html">tracking system</a></li>
+                </ol>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="submit.html" class="btn btn-primary btn-large">Submit Your Manuscript</a>
+                </div>
+            </div>
+
+            <div class="guideline-section">
+                <h2>Review Process</h2>
+                <p>All submissions undergo double-blind peer review:</p>
+                <ol>
+                    <li><strong>Initial Screening</strong> - Editor checks for scope and quality (1-2 weeks)</li>
+                    <li><strong>Peer Review</strong> - Sent to 2-3 expert reviewers (4-8 weeks)</li>
+                    <li><strong>Decision</strong> - Accept, revise, or reject (1-2 weeks after reviews)</li>
+                    <li><strong>Revision</strong> - If required, authors submit revised manuscript</li>
+                    <li><strong>Final Decision</strong> - Accept for publication or reject</li>
+                    <li><strong>Publication</strong> - Published in next available issue</li>
+                </ol>
+            </div>
+
+            <div class="guideline-section">
+                <h2>Contact for Questions</h2>
+                <p>If you have any questions about the submission process or guidelines, please contact:</p>
+                <p style="margin-top: 1rem;">
+                    <strong>Email:</strong> <a href="mailto:jamheditor@gmail.com">jamheditor@gmail.com</a><br>
+                    <strong>Phone:</strong> 9560399329
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    </script>
 </body>
+
 </html>

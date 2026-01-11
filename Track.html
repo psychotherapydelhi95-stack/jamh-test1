@@ -1,149 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Track Submission | JAMH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
   <style>
-    body { background:#f7fbff; }
-    .track-container { max-width:820px; margin:50px auto; background:#fff; padding:36px; border-radius:10px; box-shadow:0 6px 18px rgba(9,30,66,0.08); }
-    h2 { color:#004080; margin-bottom:6px; }
-    p.lead { color:#333; margin-top:0; }
+    .track-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+    }
 
-    .tracker { display:flex; gap:12px; margin-top:20px; }
-    .tracker input { flex:1; padding:12px 14px; border-radius:8px; border:1px solid #d1dbe8; font-size:1rem; }
-    .tracker button { background:#004080; color:#fff; border:none; padding:12px 18px; border-radius:8px; cursor:pointer; font-weight:600; }
+    .track-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-    .status-card { margin-top:24px; padding:18px; border-radius:8px; border:1px solid #e6eefc; background:#fbfeff; }
-    .status-entry { display:flex; justify-content:space-between; gap:16px; align-items:center; }
-    .status-badge { padding:8px 12px; border-radius:20px; font-weight:700; }
-    .badge-received { background:#fff4e6; color:#a65a00; border:1px solid #ffd9b3; }
-    .badge-under { background:#e8f4ff; color:#055a9a; border:1px solid #bfe0ff; }
-    .badge-decision { background:#eafbe9; color:#117a2d; border:1px solid #c6f0c9; }
+    .track-header h1 {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
 
-    .note { margin-top:14px; color:#666; font-size:0.95rem; }
+    .tracker {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
 
-    /* small screen */
-    @media (max-width:640px){ .tracker { flex-direction:column; } }
+    .tracker input {
+      flex: 1;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--gray-300);
+      font-size: 1rem;
+      font-family: var(--font-mono);
+    }
+
+    .tracker input:focus {
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.1);
+    }
+
+    .status-timeline {
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 45px;
+      bottom: -45px;
+      width: 2px;
+      background: var(--gray-200);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-icon.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .timeline-icon.completed {
+      background: var(--success);
+      color: white;
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-lg);
+    }
+
+    .timeline-content.active {
+      background: var(--primary-100);
+      border: 2px solid var(--primary-500);
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-date {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+      border-left: 4px solid var(--info);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box h3 {
+      color: var(--primary-700);
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-box ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .info-box li {
+      margin-bottom: 0.5rem;
+      color: var(--gray-700);
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Journal of Addiction and Mental Health</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="submission.html">Submit Paper</a>
-      <a href="track.html" style="color:#ffd700;">Track Submission</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header id="mainHeader">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">JAMH</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#editors">Editorial Board</a></li>
+          <li><a href="submit.html">Submit</a></li>
+          <li><a href="Track.html">Track Submission</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main class="track-container">
-    <h2>Track Your Submission</h2>
-    <p class="lead">Enter the Submission ID you received in your confirmation email to see the current status of your manuscript.</p>
+  <div class="container">
+    <div class="track-container">
+      <div class="track-header">
+        <h1>Track Your Submission</h1>
+        <p style="color: var(--gray-600); margin: 0;">Enter your Submission ID to check the current status of your
+          manuscript</p>
+      </div>
 
-    <div class="tracker">
-      <input id="submissionId" placeholder="Enter Submission ID (e.g. JAMH-2025-0001)" aria-label="Submission ID">
-      <button id="checkBtn">Check Status</button>
+      <div class="tracker">
+        <input id="submissionId" placeholder="Enter Submission ID (e.g. JAMH-2025-0001)" aria-label="Submission ID">
+        <button id="checkBtn" class="btn btn-primary">Check Status</button>
+      </div>
+
+      <div id="statusCard" style="display: none;">
+        <!-- Filled dynamically -->
+      </div>
+
+      <div class="info-box">
+        <h3>How Tracking Works</h3>
+        <ol>
+          <li>When you submit, you receive a unique <strong>Submission ID</strong> via email.</li>
+          <li>Editors update the status in our system (Received → Under Review → Decision).</li>
+          <li>This page queries our database to show you real-time status updates.</li>
+        </ol>
+        <p style="margin: 1rem 0 0 0; font-size: 0.875rem; color: var(--gray-600);">
+          If you did not receive a confirmation email, check your spam folder or contact
+          <strong>jamheditor@gmail.com</strong>.
+        </p>
+      </div>
     </div>
-
-    <div class="status-card" id="statusCard" style="display:none;">
-      <!-- Filled dynamically -->
-    </div>
-
-    <p class="note">If you did not receive a confirmation email, check your spam folder or contact <strong>jamheditor@gmail.com</strong>.</p>
-
-    <hr style="margin-top:26px; border:none; border-top:1px solid #eef4ff;">
-
-    <h3 style="margin-top:20px;">How tracking works</h3>
-    <ol>
-      <li>When you submit, the system emails you a unique <strong>Submission ID</strong> and stores your data in a secure Google Drive folder.</li>
-      <li>Editors update the status in an internal Google Sheet (Received → Under Review → Decision).</li>
-      <li>This page queries that sheet (read-only) and shows the up-to-date status.\li>
-    </ol>
-
-    <p class="note">Want this hooked up to Google Sheets automatically? I can provide the exact Google Apps Script that updates the sheet and returns JSON for this page to query (CORS-friendly).</p>
-  </main>
+  </div>
 
   <footer>
-    <p>© 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology</p>
+    <div class="container">
+      <p>© 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology</p>
+    </div>
   </footer>
 
   <script>
-    // Live Google Sheet endpoint
-const API_URL = "https://script.google.com/macros/s/AKfycbwxVpB7515Y-XBSwCjf2mEVPltpfh-cVgzPD6bxhn_Kt8SkV_GbhDGzSVXhM92XeoyC/exec";
-
-    };
-
+    const API_URL = "https://script.google.com/macros/s/AKfycbwxVpB7515Y-XBSwCjf2mEVPltpfh-cVgzPD6bxhn_Kt8SkV_GbhDGzSVXhM92XeoyC/exec";
     const checkBtn = document.getElementById('checkBtn');
     const statusCard = document.getElementById('statusCard');
+    const submissionIdInput = document.getElementById('submissionId');
 
     checkBtn.addEventListener("click", () => {
-  const id = submissionId.value.trim();
+      const id = submissionIdInput.value.trim();
 
-  if (!id) {
-    statusCard.style.display = "block";
-    statusCard.innerHTML = "Please enter a Submission ID.";
-    return;
-  }
-
-  fetch(`${API_URL}?id=${encodeURIComponent(id)}`)
-    .then(r => r.json())
-    .then(data => {
-      statusCard.style.display = "block";
-
-      if (data.error) {
-        statusCard.innerHTML = `<strong>${id}</strong> not found.`;
-        return;
-      }
-
-      statusCard.innerHTML = `
-        <strong>Submission ID:</strong> ${data.SubmissionID}<br>
-        <strong>Status:</strong> ${data.Status}<br>
-        <strong>Last Updated:</strong> ${data.LastUpdated}<br>
-        <strong>Note:</strong> ${data.Note}
-      `;
-    }).catch(err => {
-      statusCard.innerHTML = "Error connecting to the server.";
-    });
-});
-
-      }
-
-      // Demo lookup
-      const row = demoDB[id];
-      if (!row) {
+      if (!id) {
+        statusCard.style.display = "block";
         statusCard.innerHTML = `
-          <div class="status-entry">
-            <div><strong>${id}</strong> — Not found</div>
-            <div><span class="status-badge badge-received">Not found</span></div>
+          <div class="card" style="background: #fef2f2; border-left: 4px solid var(--error); margin-top: 1.5rem;">
+            <p style="margin: 0; color: var(--error);">Please enter a Submission ID.</p>
           </div>
-          <p class="note">If you believe this is an error, email <strong>jamheditor@gmail.com</strong>.</p>
         `;
         return;
       }
 
-      // Status badge
-      let badgeClass = 'badge-received';
-      if (row.status.toLowerCase().includes('under')) badgeClass = 'badge-under';
-      if (row.status.toLowerCase().includes('decision')) badgeClass = 'badge-decision';
+      // Show loading state
+      checkBtn.textContent = 'Checking...';
+      checkBtn.disabled = true;
 
-      statusCard.innerHTML = `
-        <div class="status-entry">
-          <div>
-            <div><strong>Submission ID:</strong> ${id}</div>
-            <div><strong>Status:</strong> ${row.status}</div>
-            <div><strong>Last updated:</strong> ${row.date}</div>
-            <div style="margin-top:8px; color:#333;"><strong>Note:</strong> ${row.note}</div>
-          </div>
-          <div><span class="status-badge ${badgeClass}">${row.status}</span></div>
-        </div>
-      `;
+      fetch(`${API_URL}?id=${encodeURIComponent(id)}`)
+        .then(r => r.json())
+        .then(data => {
+          statusCard.style.display = "block";
+
+          if (data.error) {
+            statusCard.innerHTML = `
+              <div class="card" style="background: #fef2f2; border-left: 4px solid var(--error); margin-top: 1.5rem;">
+                <h3 style="color: var(--error); margin-bottom: 0.5rem;">Submission Not Found</h3>
+                <p style="margin: 0; color: var(--gray-700);"><strong>${id}</strong> was not found in our system.</p>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: var(--gray-600);">
+                  If you believe this is an error, please contact <strong>jamheditor@gmail.com</strong>.
+                </p>
+              </div>
+            `;
+          } else {
+            // Show timeline
+            const status = data.Status || 'Received';
+            const isUnderReview = status.toLowerCase().includes('under') || status.toLowerCase().includes('review');
+            const isDecision = status.toLowerCase().includes('decision') || status.toLowerCase().includes('accept') || status.toLowerCase().includes('reject');
+
+            statusCard.innerHTML = `
+              <div style="margin-top: 2rem;">
+                <div class="card" style="background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%); border-left: 4px solid var(--primary-500);">
+                  <h3 style="color: var(--primary-700); margin-bottom: 1rem;">Submission Details</h3>
+                  <p style="margin: 0.5rem 0;"><strong>Submission ID:</strong> <code style="background: var(--white); padding: 0.25rem 0.5rem; border-radius: 4px; font-family: var(--font-mono);">${data.SubmissionID}</code></p>
+                  <p style="margin: 0.5rem 0;"><strong>Current Status:</strong> ${data.Status}</p>
+                  <p style="margin: 0.5rem 0;"><strong>Last Updated:</strong> ${data.LastUpdated || 'N/A'}</p>
+                  ${data.Note ? `<p style="margin: 0.5rem 0;"><strong>Note:</strong> ${data.Note}</p>` : ''}
+                </div>
+
+                <div class="status-timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-icon completed">✓</div>
+                    <div class="timeline-content">
+                      <div class="timeline-title">Manuscript Received</div>
+                      <div class="timeline-date">Your submission has been received and logged</div>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-icon ${isUnderReview || isDecision ? 'completed' : 'active'}">
+                      ${isUnderReview || isDecision ? '✓' : '⏱'}
+                    </div>
+                    <div class="timeline-content ${isUnderReview && !isDecision ? 'active' : ''}">
+                      <div class="timeline-title">Under Review</div>
+                      <div class="timeline-date">Manuscript is being evaluated by reviewers</div>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-icon ${isDecision ? 'completed' : ''}">
+                      ${isDecision ? '✓' : '📋'}
+                    </div>
+                    <div class="timeline-content ${isDecision ? 'active' : ''}">
+                      <div class="timeline-title">Decision</div>
+                      <div class="timeline-date">Final decision on your manuscript</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          }
+
+          checkBtn.textContent = 'Check Status';
+          checkBtn.disabled = false;
+        })
+        .catch(err => {
+          statusCard.style.display = "block";
+          statusCard.innerHTML = `
+            <div class="card" style="background: #fef2f2; border-left: 4px solid var(--error); margin-top: 1.5rem;">
+              <p style="margin: 0; color: var(--error);">Error connecting to the server. Please try again later.</p>
+            </div>
+          `;
+          checkBtn.textContent = 'Check Status';
+          checkBtn.disabled = false;
+        });
     });
 
     // ENTER key support
-    document.getElementById('submissionId').addEventListener('keypress', function(e){ if (e.key === 'Enter') checkBtn.click(); });
+    submissionIdInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        checkBtn.click();
+      }
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
   </script>
 </body>
+
 </html>

@@ -1,47 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Submit Manuscript – JAMH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .form-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-header h1 {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-header p {
+      color: var(--gray-500);
+      margin: 0;
+    }
+
+    .file-upload-zone {
+      position: relative;
+      padding: 3rem;
+      border: 3px dashed var(--gray-300);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      background: var(--gray-50);
+    }
+
+    .file-upload-zone:hover {
+      border-color: var(--primary-500);
+      background: var(--primary-100);
+    }
+
+    .file-upload-zone.dragover {
+      border-color: var(--primary-500);
+      background: var(--primary-100);
+      transform: scale(1.02);
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    #fileLabel {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--primary-700);
+    }
+
+    .char-counter {
+      text-align: right;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+      margin-top: 0.25rem;
+    }
+
+    .success-animation {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .success-animation.show {
+      display: block;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--success);
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      animation: scaleIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .submission-id {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--primary-700);
+      background: var(--primary-100);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+      word-break: break-all;
+    }
+  </style>
 </head>
 
 <body>
-  <h1 style="text-align:center;">Submit Your Manuscript</h1>
+  <header id="mainHeader">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">JAMH</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#editors">Editorial Board</a></li>
+          <li><a href="submit.html">Submit</a></li>
+          <li><a href="Track.html">Track Submission</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div style="max-width:600px;margin:auto;padding:20px;">
-    <form id="jamhForm">
-      <label>Full Name</label>
-      <input type="text" name="name" required><br><br>
+  <div class="container">
+    <div class="form-container">
+      <div id="formView">
+        <div class="form-header">
+          <h1>Submit Your Manuscript</h1>
+          <p>Complete the form below to submit your research to JAMH</p>
+        </div>
 
-      <label>Email</label>
-      <input type="email" name="email" required><br><br>
+        <form id="jamhForm">
+          <div class="form-group">
+            <label for="name">Full Name <span style="color: var(--error);">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
 
-      <label>Manuscript Title</label>
-      <input type="text" name="title" required><br><br>
+          <div class="form-group">
+            <label for="email">Email Address <span style="color: var(--error);">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
 
-      <label>Abstract</label>
-      <textarea name="abstract" required></textarea><br><br>
+          <div class="form-group">
+            <label for="title">Manuscript Title <span style="color: var(--error);">*</span></label>
+            <input type="text" id="title" name="title" placeholder="Enter the title of your manuscript" required>
+          </div>
 
-      <label>Keywords</label>
-      <textarea name="keywords"></textarea><br><br>
+          <div class="form-group">
+            <label for="abstract">Abstract <span style="color: var(--error);">*</span></label>
+            <textarea id="abstract" name="abstract" placeholder="Enter your abstract (max 300 words)" required
+              maxlength="2000"></textarea>
+            <div class="char-counter" id="abstractCounter">0 / 2000 characters</div>
+          </div>
 
-      <label>Upload Manuscript File</label>
-      <input type="file" id="file" required /><br><br>
+          <div class="form-group">
+            <label for="keywords">Keywords</label>
+            <textarea id="keywords" name="keywords"
+              placeholder="Enter keywords separated by commas (e.g., addiction, mental health, therapy)"
+              rows="3"></textarea>
+          </div>
 
-      <button type="submit">Submit Manuscript</button>
-    </form>
+          <div class="form-group">
+            <label>Upload Manuscript File (PDF) <span style="color: var(--error);">*</span></label>
+            <div class="file-upload-zone" id="fileZone">
+              <div class="upload-icon">📄</div>
+              <p style="margin: 0; color: var(--gray-700); font-weight: 600;">Drag & drop your file here</p>
+              <p style="margin: 0.5rem 0 0 0; color: var(--gray-500); font-size: 0.875rem;">or click to browse</p>
+              <input type="file" id="file" accept=".pdf" required style="display: none;">
+              <span id="fileLabel"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large" style="width: 100%; margin-top: 1.5rem;">
+            Submit Manuscript
+          </button>
+        </form>
+      </div>
+
+      <div id="successView" class="success-animation">
+        <div class="checkmark">✓</div>
+        <h2 style="color: var(--success); margin-bottom: 1rem;">Submission Successful!</h2>
+        <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Your manuscript has been submitted successfully.
+          Please save your Submission ID for tracking.</p>
+        <div class="submission-id" id="submissionIdDisplay"></div>
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+          <a href="Track.html" class="btn btn-primary">Track Submission</a>
+          <a href="index.html" class="btn btn-secondary">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <footer>
+    <div class="container">
+      <p>© 2025 Journal of Addiction and Mental Health — Society for Addiction Psychology</p>
+    </div>
+  </footer>
+
   <script>
+    // Character counter for abstract
+    const abstractField = document.getElementById('abstract');
+    const abstractCounter = document.getElementById('abstractCounter');
+
+    abstractField.addEventListener('input', function () {
+      const count = this.value.length;
+      abstractCounter.textContent = `${count} / 2000 characters`;
+    });
+
+    // File upload handling
+    const fileInput = document.getElementById('file');
+    const fileZone = document.getElementById('fileZone');
+    const fileLabel = document.getElementById('fileLabel');
+
+    fileZone.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', function () {
+      if (this.files.length > 0) {
+        fileLabel.textContent = `Selected: ${this.files[0].name}`;
+        fileZone.style.borderColor = 'var(--success)';
+        fileZone.style.background = '#d1fae5';
+      }
+    });
+
+    // Drag and drop
+    fileZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileZone.classList.add('dragover');
+    });
+
+    fileZone.addEventListener('dragleave', () => {
+      fileZone.classList.remove('dragover');
+    });
+
+    fileZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileZone.classList.remove('dragover');
+
+      if (e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        fileLabel.textContent = `Selected: ${e.dataTransfer.files[0].name}`;
+        fileZone.style.borderColor = 'var(--success)';
+        fileZone.style.background = '#d1fae5';
+      }
+    });
+
+    // Form submission
     document.getElementById("jamhForm").addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
 
       const file = document.getElementById("file").files[0];
       const reader = new FileReader();
 
-      reader.onload = async function() {
+      reader.onload = async function () {
         const base64 = reader.result.split(',')[1];
 
         const formData = new URLSearchParams();
@@ -54,17 +290,39 @@
         formData.append("fileType", file.type);
         formData.append("fileContent", base64);
 
-        const res = await fetch("https://script.google.com/macros/s/AKfycbzeaIKV_76Ceznb9ISWFPw0n28a7jEFq3fEuGDTiZSQCG8HGOM62BwA-8NYRdp5DMG7/exec", {
-          method: "POST",
-          body: formData,
-        });
+        try {
+          const res = await fetch("https://script.google.com/macros/s/AKfycbzeaIKV_76Ceznb9ISWFPw0n28a7jEFq3fEuGDTiZSQCG8HGOM62BwA-8NYRdp5DMG7/exec", {
+            method: "POST",
+            body: formData,
+          });
 
-        const result = await res.json();
-        alert("Submitted successfully! Submission ID: " + result.submissionID);
+          const result = await res.json();
+
+          // Show success view
+          document.getElementById('formView').style.display = 'none';
+          document.getElementById('successView').classList.add('show');
+          document.getElementById('submissionIdDisplay').textContent = result.submissionID || 'JAMH-2025-XXXX';
+
+        } catch (error) {
+          alert('An error occurred during submission. Please try again.');
+          submitBtn.textContent = 'Submit Manuscript';
+          submitBtn.disabled = false;
+        }
       };
 
       reader.readAsDataURL(file);
     });
+
+    // Header scroll effect
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
   </script>
 </body>
+
 </html>
