@@ -16,13 +16,21 @@
 <body>
   <header id="mainHeader">
     <div class="nav-inner">
-      <a class="logo" href="index.html">JAMH</a>
+      <div class="logo-section">
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+          <img src="images/logos/JAMH.png" alt="JAMH Logo" class="header-logo">
+          <span class="logo-text">JAMH</span>
+          <span class="logo-separator">|</span>
+          <span class="society-name">Society of Addiction Psychology</span>
+          <img src="images/logos/SFAP.png" alt="SAP Logo" class="header-logo">
+        </a>
+      </div>
       <nav aria-label="Main navigation">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#editors">Editorial Board</a></li>
           <li><a href="#submit">Submit</a></li>
-          <li><a href="#contents">Contents</a></li>
+          <li><a href="#contents">Editorial</a></li>
           <li><a href="#issue">Issues</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -164,9 +172,14 @@
             form where you can upload files, receive instant confirmation, and get a Submission ID.
           </p>
         </div>
-        <div class="submit-cta">
-          <a href="submit.html" class="btn btn-primary">Submit Manuscript</a>
-          <a href="guidelines.html" class="btn btn-secondary">Author Guidelines</a>
+        <div class="submit-cta" style="flex-direction: column; gap: 1rem;">
+          <a href="submit.html" class="btn btn-primary btn-large" style="width: 100%;">Submit Manuscript</a>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="guidelines.html" class="btn btn-secondary"
+              style="flex: 1; min-width: 220px; white-space: nowrap;">Author Guidelines</a>
+            <a href="Track.html" class="btn btn-secondary" style="flex: 1; min-width: 220px; white-space: nowrap;">Track
+              Submission</a>
+          </div>
         </div>
       </div>
     </section>

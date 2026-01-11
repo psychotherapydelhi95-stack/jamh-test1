@@ -211,7 +211,43 @@ header.scrolled {
   gap: var(--space-5);
 }
 
-.logo {
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-section a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform var(--transition-base);
+}
+
+.logo-section a:hover {
+  transform: scale(1.02);
+}
+
+.header-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Remove black background from SFAP logo */
+.header-logo:last-of-type {
+  mix-blend-mode: multiply;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 0.25rem;
+}
+
+.logo-text {
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: 800;
@@ -220,11 +256,22 @@ header.scrolled {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.5px;
-  transition: transform var(--transition-base);
 }
 
-.logo:hover {
-  transform: scale(1.05);
+.logo-separator {
+  font-size: var(--text-2xl);
+  color: var(--gray-300);
+  font-weight: 300;
+  padding: 0 0.5rem;
+}
+
+.society-name {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--gray-700);
+  max-width: 200px;
+  line-height: 1.2;
 }
 
 nav ul {
@@ -798,6 +845,24 @@ footer a:hover {
 
   .nav-inner {
     flex-wrap: wrap;
+  }
+
+  .logo-section a {
+    gap: 0.5rem;
+  }
+
+  .header-logo {
+    height: 40px;
+  }
+
+  .society-name {
+    display: none;
+    /* Hide society name on tablets and smaller */
+  }
+
+  .logo-separator {
+    display: none;
+    /* Hide separator when society name is hidden */
   }
 
   nav ul {
