@@ -18,7 +18,6 @@
     <div class="nav-inner">
       <div class="logo-section">
         <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
-          <img src="images/logos/JAMH.png" alt="JAMH Logo" class="header-logo">
           <span class="logo-text">JAMH</span>
           <span class="logo-separator">|</span>
           <span class="society-name">Society of Addiction Psychology</span>
@@ -57,7 +56,7 @@
       <p class="text-muted">Official journal of the <strong>Society for Addiction Psychology (SAP)</strong>, established
         in 2022. Publishes original research, invited reviews, case reports, and scholarly work related to addiction and
         mental health.</p>
-      <p class="text-muted"><strong>ISSN:</strong> 3107-8338</p>
+      <p class="text-muted"><strong>ISSN: 3107-8338 (Print)</strong></p>
 
       <div
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
@@ -198,45 +197,11 @@
       <h2 id="issue-heading">Published Issues</h2>
 
       <div style="margin-top: 1.5rem;">
-        <h3 style="font-size: 1.25rem; color: var(--gray-900); margin-bottom: 1rem;">Volume 1, Issues 1–4 (2025-2026)
-        </h3>
-
-        <div style="display: grid; gap: 1rem;">
-          <a href="issues/v1-i1.html" class="card"
-            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 1</h4>
-              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">July–September 2025</p>
-            </div>
-            <span class="badge badge-success">Published</span>
-          </a>
-
-          <a href="issues/v1-i2.html" class="card"
-            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 2</h4>
-              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">October–December 2025</p>
-            </div>
-            <span class="badge badge-success">Published</span>
-          </a>
-
-          <a href="issues/v1-i3.html" class="card"
-            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 3</h4>
-              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">January–March 2026</p>
-            </div>
-            <span class="badge badge-under">Upcoming</span>
-          </a>
-
-          <a href="issues/v1-i4.html" class="card"
-            style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">Volume 1, Issue 4</h4>
-              <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">April–June 2026</p>
-            </div>
-            <span class="badge badge-under">Upcoming</span>
-          </a>
+        <!-- Issues will be loaded dynamically -->
+        <div id="issues-container">
+          <div style="text-align: center; padding: 2rem; color: var(--gray-500);">
+            <p>📚 Preparing latest issues...</p>
+          </div>
         </div>
       </div>
     </section>
@@ -300,6 +265,90 @@
 
     window.addEventListener('scroll', highlightNav, { passive: true });
     highlightNav();
+  </script>
+
+  <script src="assets/articles-loader.js"></script>
+  <script>
+    // Load and display issues dynamically
+    async function loadIssues() {
+      const container = document.getElementById('issues-container');
+
+      try {
+        const issues = await getIssues();
+
+        if (issues.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 2rem; color: var(--gray-500);">
+              <p>No issues available yet.</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Group issues by volume
+        const volumeGroups = {};
+        issues.forEach(issue => {
+          if (!volumeGroups[issue.volume]) {
+            volumeGroups[issue.volume] = [];
+          }
+          volumeGroups[issue.volume].push(issue);
+        });
+
+        // Render grouped issues
+        let html = '';
+        Object.keys(volumeGroups).sort().forEach(volume => {
+          const volumeIssues = volumeGroups[volume];
+          const minIssue = Math.min(...volumeIssues.map(i => i.issue));
+          const maxIssue = Math.max(...volumeIssues.map(i => i.issue));
+
+          html += `
+            <h3 style="font-size: 1.25rem; color: var(--gray-900); margin-bottom: 1rem;">
+              Volume ${volume}, Issue${volumeIssues.length > 1 ? 's' : ''} ${minIssue}${maxIssue !== minIssue ? '–' + maxIssue : ''}
+            </h3>
+            <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+          `;
+
+          volumeIssues.forEach(issue => {
+            const status = getIssueStatus(issue);
+            const badgeClass = getIssueBadgeClass(issue);
+            const issueUrl = `issue.html?id=${encodeURIComponent(issue.title)}`;
+
+            html += `
+              <a href="${issueUrl}" class="card"
+                style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h4 style="color: var(--primary-700); margin-bottom: 0.25rem;">
+                    Volume ${issue.volume}, Issue ${issue.issue}
+                  </h4>
+                  <p style="margin: 0; font-size: 0.875rem; color: var(--gray-500);">
+                    ${issue.period}
+                  </p>
+                </div>
+                <span class="badge ${badgeClass}">${status}</span>
+              </a>
+            `;
+          });
+
+          html += '</div>';
+        });
+
+        container.innerHTML = html;
+
+      } catch (error) {
+        console.error('Error loading issues:', error);
+        container.innerHTML = `
+          <div style="background: #fee; border: 1px solid #fcc; color: #c33; padding: 2rem; border-radius: var(--radius-xl); text-align: center;">
+            <p><strong>Unable to load issues at this time</strong></p>
+            <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+              Please make sure the Google Apps Script is properly configured.
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // Load issues when page loads
+    loadIssues();
   </script>
 </body>
 
